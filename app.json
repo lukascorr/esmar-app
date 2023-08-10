@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Esmar",
+    "slug": "Esmar",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo-esmar.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/logo-esmar.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.softwarex.esmar"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo-esmar.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.softwarex.esmar"
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "02456ad7-1e2b-4f9d-bd34-7c61edf74e8b"
+      }
+    },
+    "owner": "lukascorr"
+  },
+  "android": {
+    "googleServicesFile": "./google-services.json"
+  }
+}

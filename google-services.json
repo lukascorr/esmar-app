@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "301329535569",
+    "project_id": "esmar-ff9a6",
+    "storage_bucket": "esmar-ff9a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301329535569:android:b138fb9c853bdc11b95e70",
+        "android_client_info": {
+          "package_name": "com.softwarex.esmar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301329535569-hunpfepggc1ftbmmbn31ob0ufc2okodf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC40vxTFzhXJGW8GSAy8GNwWtJKcLLKYDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301329535569-hunpfepggc1ftbmmbn31ob0ufc2okodf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
