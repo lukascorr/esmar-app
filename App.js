@@ -15,7 +15,6 @@ export default function App() {
   Notifications.setNotificationHandler({
     handleNotification: async (notification) => {
       const userId = notification?.request?.content?.data?.user_id;
-    dismissAllNotificationsAsync()
 
       return {
         shouldShowAlert: userId == user?.idUsuario,

@@ -16,13 +16,15 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.softwarex.esmar"
+      "bundleIdentifier": "com.softwarex.esmar",
+      "buildNumber": "2"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo-esmar-square.png"
       },
-      "package": "com.softwarex.esmar"
+      "package": "com.softwarex.esmar",
+      "versionCode": 3
     },
     "web": {
       "bundler": "metro",
@@ -36,7 +38,6 @@
     "owner": "lukascorr"
   },
   "android": {
-    "googleServicesFile": "android/app/google-services.json",
-    "versionCode": 2
+    "googleServicesFile": "android/app/google-services.json"
   }
 }
