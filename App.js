@@ -1,22 +1,28 @@
 import { WebView } from 'react-native-webview';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Platform, SafeAreaView, StyleSheet, Linking } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import Constants from "expo-constants";
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: true,
-  }),
-});
-
 export default function App() {
 
+  const [user, setUser] = useState(null);
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => sendTokenToApi(token));
   });
+
+  Notifications.setNotificationHandler({
+    handleNotification: async (notification) => {
+      const userId = notification?.request?.content?.data?.user_id;
+    dismissAllNotificationsAsync()
+
+      return {
+        shouldShowAlert: userId == user?.idUsuario,
+        shouldPlaySound: userId == user?.idUsuario,
+        shouldSetBadge: userId == user?.idUsuario,
+      };
+    },
+  })
 
   setInterval(() => {
     this.webref.injectJavaScript(script());
@@ -52,13 +58,25 @@ export default function App() {
   }
 
   const script = () => {
-    return `document.getElementById('resumenDisponible').onclick = function() {
-      window.ReactNativeWebView.postMessage('downloadResumen')
+    return `
+    try {
+      document.getElementById('resumenDisponible').onclick = function() {
+        window.ReactNativeWebView.postMessage('downloadResumen');
       };
       document.getElementById('detalleDisponible').onclick = function() {
         window.ReactNativeWebView.postMessage('downloadDetalle')
-        };        
-    true;`
+      };
+      function getUser() {
+        if (window.localStorage.getItem('data')) {
+          window.ReactNativeWebView.postMessage(window.localStorage.getItem('data'))
+        }
+      }
+      window.onload = getUser();
+    } catch (e) {
+      true;
+    }
+    true;
+    `
   }
 
   const sendTokenToApi = (token) => {
@@ -79,10 +97,11 @@ export default function App() {
       nativeEvent: { data },
     } = event;
     if (data === 'downloadResumen') {
-      await Linking.openURL("https://esmar.app/api/propietarios/resumenDisponible?idUsuarioRemoto=0001")
-    }
-    if (data === 'downloadDetalle') {
-      await Linking.openURL("https://esmar.app/api/propietarios/detalleDisponible?idUsuarioRemoto=1")
+      await Linking.openURL("https://esmar.app/api/propietarios/resumenDisponible?idUsuarioRemoto=" + user.idUsuarioRemoto)
+    } else if (data === 'downloadDetalle') {
+      await Linking.openURL("https://esmar.app/api/propietarios/detalleDisponible?idUsuarioRemoto=" + user.idUsuarioRemoto)
+    } else if (user === null) {
+      setUser(JSON.parse(data))
     }
   };
 

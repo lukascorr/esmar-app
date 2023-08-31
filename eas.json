@@ -24,12 +24,8 @@
   "submit": {
     "production": {
       "android": {
-        "serviceAccountKeyPath": "../path/to/api-xxx-yyy-zzz.json",
+        "serviceAccountKeyPath": "android/app/service-account.json",
         "track": "internal"
-      },
-      "ios": {
-        "appleId": "soporte@softwarex.com.ar",
-        "ascAppId": "AltaCordoba$2131+"
       }
     }
   }
