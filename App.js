@@ -1,11 +1,12 @@
 import { WebView } from 'react-native-webview';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Platform, SafeAreaView, StyleSheet, Linking } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import Constants from "expo-constants";
 
 export default function App() {
 
+  const webref = useRef(null);
   const [user, setUser] = useState(null);
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => sendTokenToApi(token));
@@ -25,7 +26,7 @@ export default function App() {
   })
 
   setInterval(() => {
-    this.webref.injectJavaScript(script());
+    webref.current.injectJavaScript(script());
   }, 100);
 
   const registerForPushNotificationsAsync = async () => {
@@ -113,7 +114,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <WebView source={{ uri: 'https://esmar.app' }}
-        ref={(r) => (this.webref = r)}
+        ref={webref}
         injectedJavaScriptBeforeContentLoaded={runBeforeFirst}
         javaScriptEnabled={true}
         domStorageEnabled={true}

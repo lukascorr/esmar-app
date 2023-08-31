@@ -2,7 +2,7 @@
   "expo": {
     "name": "Esmar",
     "slug": "Esmar",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/logo-esmar-square.png",
     "userInterfaceStyle": "light",
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo-esmar.png"
+        "foregroundImage": "./assets/logo-esmar-square.png"
       },
       "package": "com.softwarex.esmar"
     },
@@ -36,6 +36,7 @@
     "owner": "lukascorr"
   },
   "android": {
-    "googleServicesFile": "android/app/google-services.json"
+    "googleServicesFile": "android/app/google-services.json",
+    "versionCode": 2
   }
 }
